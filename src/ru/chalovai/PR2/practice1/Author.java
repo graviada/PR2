@@ -1,4 +1,4 @@
-package ru.chalovai.practice1;
+package ru.chalovai.PR2.practice1;
 
 public class Author {
 
@@ -29,9 +29,6 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author " +
-                "name = '" + name + '\'' +
-                ", email = '" + email + '\'' +
-                ", gender = " + gender ;
+        return name + " (" + gender + ") at " + email;
     }
 }
