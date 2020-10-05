@@ -27,7 +27,7 @@ public class Author {
         return gender;
     }
 
-    @Override
+    //@Override
     public String toString() {
         return name + " (" + gender + ") at " + email;
     }

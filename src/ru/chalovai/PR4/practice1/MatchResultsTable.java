@@ -15,7 +15,7 @@ class MatchResultsTable extends JFrame
     JButton butMilan = new JButton("AC Milan");
 
     JLabel lblResult = new JLabel("RESULT: 0:0");
-    JLabel lblWinner = new JLabel("WINNER: DRAW"); // Draw - ничья
+    Label lblWinner = new Label("WINNER: DRAW"); // Draw - ничья
     JLabel lblLastScore = new JLabel("LAST GOAL: N/A" );
 
     private int milanScore = 0;
