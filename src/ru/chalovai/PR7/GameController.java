@@ -5,10 +5,19 @@ import java.util.Stack;
 public class GameController {
 
     public static boolean isBigger(Stack<Card> deckPlayer1, Stack<Card> deckPlayer2){
-        if ((deckPlayer1.peek().getValue() > deckPlayer2.peek().getValue() && !(deckPlayer1.peek().getValue() == 9 && deckPlayer2.peek().getValue() == 0))|| (deckPlayer1.peek().getValue() == 0 && deckPlayer2.peek().getValue() == 9))
+
+        if ((deckPlayer1.peek().getValue() > deckPlayer2.peek().getValue() &&
+                !(deckPlayer1.peek().getValue() == 9 && deckPlayer2.peek().getValue()
+                        == 0))|| (deckPlayer1.peek().getValue() == 0 &&
+                deckPlayer2.peek().getValue() == 9))
             return true;
-        else if((deckPlayer1.peek().getValue() < deckPlayer2.peek().getValue() && ! (deckPlayer2.peek().getValue() == 9 && deckPlayer1.peek().getValue() == 0))|| (deckPlayer2.peek().getValue() == 0 && deckPlayer1.peek().getValue() == 9))
+
+        else if((deckPlayer1.peek().getValue() < deckPlayer2.peek().getValue() &&
+                ! (deckPlayer2.peek().getValue() == 9 && deckPlayer1.peek().getValue()
+                        == 0)) || (deckPlayer2.peek().getValue() == 0 &&
+                deckPlayer1.peek().getValue() == 9))
             return false;
+
         return false;
     }
 
@@ -18,8 +27,10 @@ public class GameController {
 
             if (deckPlayer1.isEmpty())
                 return ("Second player won on the " + move + " move!");
+
             else if (deckPlayer2.isEmpty())
                 return ("First player won on the " + move + " move!");
+
             else if (move >= 106)
                 return ("DRAW on the " + move + " move!");
 

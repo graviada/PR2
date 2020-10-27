@@ -7,14 +7,11 @@ import java.awt.event.ActionListener;
 import java.util.Stack;
 
 public class GameList extends JFrame {
-
-
     JPanel[] pnl = new JPanel[3];
     JButton butPlay = new JButton("Play!");
     Font fnt1 = new Font("fnt1", Font.BOLD, 20);
     JLabel lblPl1 = new JLabel("Игрок 1");
     JLabel lblPl2 = new JLabel("Игрок 2");
-
 
     private static void setGrid(JPanel pnl, Stack<Card> deck){
         for (int i = 4; i > -1; i--) {
@@ -45,9 +42,6 @@ public class GameList extends JFrame {
         pnl[1].setLayout(new GridLayout(6, 1));
         pnl[1].add(lblPl2);
         setGrid(pnl[1], deckPlayer2);
-
-
-
 
         JPanel grid = new JPanel(new GridLayout(1, 2, 30, 10) );
         grid.add (pnl[0]);

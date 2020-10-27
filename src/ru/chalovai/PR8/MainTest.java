@@ -18,6 +18,7 @@ public class MainTest {
         fillQueueWithString(queue1);
         System.out.println(queue1);
 
+        /*
         //===================================ТЕСТ BoundedWaitList=======================================================
         BoundedWaitList<String> bList= new BoundedWaitList(5, queue1);
         System.out.println(bList);
@@ -30,12 +31,14 @@ public class MainTest {
         bList.add("String element 12");
         System.out.println(bList);
 
+        // Проверка наличия элемента
         System.out.println(bList.contains("String element 12"));
         System.out.println(bList.contains("String element 13"));
 
 
         System.out.println("");
         System.out.println("");
+        */
         //===================================ТЕСТ UnfairWaitList========================================================
 
         UnfairWaitList<String> uList= new UnfairWaitList(queue1);

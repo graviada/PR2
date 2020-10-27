@@ -2,7 +2,7 @@ package ru.chalovai.PR8;
 
 import java.util.Collection;
 
-public class UnfairWaitList<E> extends WaitList<E>  implements IWaitList<E>{
+public class UnfairWaitList<E> extends WaitList<E> implements IWaitList<E>{
     @Override
     public void add(E element) {
         super.add(element);
@@ -13,10 +13,8 @@ public class UnfairWaitList<E> extends WaitList<E>  implements IWaitList<E>{
         return super.remove();
     }
 
-    //
     //В задании на UML было необходимо создать метод void remove(), но с таким названием происходит
-    //конфликт имен. Поэтому я решил переименовать его в void removeElement()
-    //
+    //конфликт имен, поэтому он переименован в void removeElement()
 
     public void removeElement(E element){
         content.remove(element);
@@ -42,9 +40,12 @@ public class UnfairWaitList<E> extends WaitList<E>  implements IWaitList<E>{
         return super.toString();
     }
 
-    public UnfairWaitList(Collection<E> c){ //для простоты добавил параметр в конструктор,
-        super(c);             // т.к. не понял, какой здесь может быть
-    }                        // непараметризованный конструктор
+    /* Для простоты добавлен параметр в конструктор, т.к. непонятно, какой здесь может быть
+    * непараметризованный конструктор*/
+
+    public UnfairWaitList(Collection<E> c){
+        super(c);
+    }
 
     public void moveToBack(E element){
 
