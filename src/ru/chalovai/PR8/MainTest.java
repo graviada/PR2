@@ -1,20 +1,17 @@
 package ru.chalovai.PR8;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class MainTest {
 
     public static void fillQueueWithString(ConcurrentLinkedQueue<String> q){
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 5; i++){
             q.add("String element " + i);
         }
     }
 
     public static void main(String []args){
-        ConcurrentLinkedQueue<String> queue1 = new ConcurrentLinkedQueue<String>();
+        ConcurrentLinkedQueue<String> queue1 = new ConcurrentLinkedQueue<>();
         fillQueueWithString(queue1);
         System.out.println(queue1);
 
@@ -43,24 +40,19 @@ public class MainTest {
 
         UnfairWaitList<String> uList= new UnfairWaitList(queue1);
         System.out.println(uList);
+        uList.add("String element 8");
+        uList.add("String element 9");
+        System.out.println(uList);
+
+        uList.remove("String element 0");
+        uList.add("String element 10");
         uList.add("String element 10");
         System.out.println(uList);
-        uList.add("String element 11");
-        System.out.println(uList);
 
-        uList.remove();
-        uList.add("String element 12");
-        System.out.println(uList);
+        System.out.println(uList.contains("String element 11"));
 
-        System.out.println(uList.contains("String element 12"));
-        System.out.println(uList.contains("String element 13"));
-
-        uList.removeElement("String element 1");
-        uList.removeElement("String element 3");
-        uList.removeElement("String element 5");
-        uList.removeElement("String element 7");
-        uList.removeElement("String element 9");
-        uList.removeElement("String element 11");
+        uList.remove("String element 10");
+        uList.remove("String element 3");
 
         System.out.println(uList);
 

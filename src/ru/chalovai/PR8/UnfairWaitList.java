@@ -8,16 +8,16 @@ public class UnfairWaitList<E> extends WaitList<E> implements IWaitList<E>{
         super.add(element);
     }
 
-    @Override
-    public E remove() {
-        return super.remove();
-    }
-
-    //В задании на UML было необходимо создать метод void remove(), но с таким названием происходит
-    //конфликт имен, поэтому он переименован в void removeElement()
-
-    public void removeElement(E element){
-        content.remove(element);
+    public void remove(E e) {
+        int i = 0;
+        boolean flag = false;
+        for (E k : content) {
+            if (!flag && k.equals(e) && i != 0) {
+                content.remove(k);
+                flag = true;
+            }
+            i++;
+        }
     }
 
     @Override
@@ -47,7 +47,7 @@ public class UnfairWaitList<E> extends WaitList<E> implements IWaitList<E>{
         super(c);
     }
 
-    public void moveToBack(E element){
-
+    public void moveToBack() {
+        content.add(content.remove());
     }
 }
