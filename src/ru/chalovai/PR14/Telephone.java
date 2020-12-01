@@ -5,6 +5,7 @@ public class Telephone {
 
     Telephone(String telephone) {
         //Для России
+        // append добавляет указанную строку к этой последовательности символов
         if (telephone.charAt(0) == '8') {
             sb.append("+<").append("7").append("><").append(telephone.substring(1,4)).append(">-<").append(telephone.substring(4,7)).append(">-<").append(telephone.substring(7,11)).append(">");
         }

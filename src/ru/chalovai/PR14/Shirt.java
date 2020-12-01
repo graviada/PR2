@@ -4,6 +4,7 @@ public class Shirt {
     private String[] shirt_properties;
 
     public Shirt(String shirt) {
+        // Разбивает эту строку вокруг совпадений данного регулярного выражения (regex)
         shirt_properties = shirt.split(",");
     }
 

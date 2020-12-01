@@ -9,7 +9,7 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         String fileName = sc.nextLine();
-        BufferedReader reader = new BufferedReader(new FileReader(System.getProperty("user.dir") + '\\' + fileName));
+        BufferedReader reader = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\" + fileName));
         StringBuilder text = new StringBuilder();
         while (reader.ready()) {
             text.append(reader.readLine()+" ");
@@ -34,11 +34,15 @@ public class Solution {
             wordsList.remove("");
         }
         while (isYes(wordsList)) {
+            // Произвольно переставляет указанный список, используя источник случайности по умолчанию.
+            // Все перестановки происходят с приблизительно равной вероятностью.
             Collections.shuffle(wordsList);
         }
         for (String word: wordsList){
             result.append(word).append(" ");
         }
+        // Удаляет символ в указанной позиции в этой последовательности. Эта последовательность сокращается
+        // на один символ.
         result.deleteCharAt(result.length()-1);
         return result;
     }

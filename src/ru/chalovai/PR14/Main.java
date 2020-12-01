@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         //№1 - Разработать класс Person, в котором имеется функция, возвращающая Фамилию И.О
-        System.out.println(new Person("Леонтьев", "Кирилл", "Константинович"));
+        System.out.println(new Person("Чалова", "Ирина", "Леонидовна"));
 
         //№2 - Доработать класс адреса, который из полученной строки выбирает соответствующие части и записывает их в соответствующие поля класса
 
@@ -30,7 +30,9 @@ public class Main {
         String otherNumber = "+104289652211";
         Telephone otherTelephone = new Telephone(otherNumber);
         System.out.println(otherTelephone);
-
+        String notrussianNumber_a = "+233241873020";
+        Telephone otherTelephone_a = new Telephone(notrussianNumber_a);
+        System.out.println(otherTelephone_a);
     }
 
 }
