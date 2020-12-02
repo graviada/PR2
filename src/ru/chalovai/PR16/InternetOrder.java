@@ -1,13 +1,20 @@
 package ru.chalovai.PR16;
 
+// Создайте класс InternetOrder, который моделирует сущность интернет заказ в ресторане или кафе. Класс основан
+// на циклическом двусвязном списке с выделенной головой и может хранить как блюда, так и напитки.
+// Внимание: список реализуется самостоятельно.
+
 public class InternetOrder implements Order {
     private ListNode front;
     private int count;
 
+    // Конструкторы:
+    // −не принимающий параметров (для списка создается только головной элемент, сам список пуст).
     public InternetOrder() {
         front = null;
     }
 
+    // −принимающий массив позиций заказа ( создаем список из N позиций).
     public InternetOrder(RestaurantOrder order) {
         Dish[] dishes = order.getAllDishes();
         Drink[] drinks = order.getAllDrinks();
@@ -19,14 +26,15 @@ public class InternetOrder implements Order {
         }
     }
 
+    // Методы:
+    // − добавляющий позицию в заказ (принимает ссылку типа Item). Пока этот метод возвращает истину после выполнения операции добавления элемента.
+
+    // Вспомогательный метод, проверяет заказ на "пустоту" (количество позиций в заказе, равное 0)
     public boolean isEmpty() {
         return count == 0;
     }
 
-    public int size() {
-        return count;
-    }
-
+    // Добавляет позицию Напиток в заказ
     public boolean add(Drink drink) {
         try {
             if (isEmpty())
@@ -38,12 +46,13 @@ public class InternetOrder implements Order {
             }
             count++;
             return true;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return false;
         }
     }
 
-
+    // Добавляет позицию Блюдо в заказ
     public boolean add(Dish dish) {
         try {
             if (isEmpty())
@@ -55,20 +64,26 @@ public class InternetOrder implements Order {
             }
             count++;
             return true;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return false;
         }
     }
 
+    // − удаляющий позицию из заказа по его названию (принимает название блюда или напитка в качестве параметра).
+    // Если позиций с заданным названием несколько, всегда удаляются последние. Возвращает логическое значение
+    // (true, если элемент был удален).
     public boolean remove(String name) {
         if (isEmpty())
             return false;
+
         if (front.dish != null) {
             if (front.dish.getName().equals(name)) {
                 front = front.next;
                 return true;
             }
         }
+
         if (front.drink != null) {
             if (front.drink.getName().equals(name)) {
                 front = front.next;
@@ -93,15 +108,20 @@ public class InternetOrder implements Order {
                 }
             }
         }
+
         if (current == null)
             return false;
+
         if (current.next != null)
             current.next.previous = current.previous;
+
         current.previous.next = current.next;
         count--;
         return true;
     }
 
+    // − удаляющий все позиции с заданным именем (принимает название в качестве параметра).
+    // Возвращает число удаленных элементов.
     public void removeAll(String name) {
         boolean flag = true;
         while (flag) {
@@ -111,10 +131,12 @@ public class InternetOrder implements Order {
         }
     }
 
+    // − возвращающий общее число позиций заказа (повторяющиеся тоже считаются) в заказе.
     public int getCount() {
         return count;
     }
 
+    // − возвращающий массив заказанных блюд и напитков (значений null в массиве быть не должно).
     public RestaurantOrder getOrder() {
         RestaurantOrder order = new RestaurantOrder();
         if (!isEmpty()) {
@@ -131,6 +153,7 @@ public class InternetOrder implements Order {
         return order;
     }
 
+    // − возвращающий общую стоимость заказа.
     public double priceTotal() {
         double cost = 0;
         if (!isEmpty()) {
@@ -147,6 +170,7 @@ public class InternetOrder implements Order {
         return cost;
     }
 
+    // − возвращающий число заказанных блюд или напитков (принимает название блюда или напитка в качестве параметра).
     public double CostTotal(String s) {
         double cost = 0;
         if (!isEmpty()) {
@@ -163,6 +187,7 @@ public class InternetOrder implements Order {
         return cost;
     }
 
+    // − возвращающий массив названий заказанных блюд и напитков (без повторов).
     public int getOrderQuantity(String name) {
         int quantity = 0;
         if (!isEmpty()) {
@@ -183,6 +208,8 @@ public class InternetOrder implements Order {
         return quantity;
     }
 
+
+    // − возвращающий массив позиций заказа, отсортированный по убыванию цены.
     public Drink[] getDrinks() {
         Drink[] drinks = new Drink[6];
         boolean flag = true;

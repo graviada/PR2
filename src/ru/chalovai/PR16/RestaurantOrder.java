@@ -1,5 +1,8 @@
 package ru.chalovai.PR16;
 
+// Переименуйте класс Order из предыдущего задания в RestaurantOrder.
+// Создайте интерфейс Order – позиции заказа.
+
 public class RestaurantOrder implements Order {
     private int countDishes, countDrinks;
     private Dish[] dishes;
@@ -12,6 +15,8 @@ public class RestaurantOrder implements Order {
         drinks = new Drink[20];
     }
 
+    // Интерфейс должен определять следующие методы:
+    // − добавления позиции в заказ (принимает ссылку типа Item), при этом возвращает логическое значение.
     public boolean add(Dish dish) {
         if (dishes.length == countDishes) {
             Dish[] tempDishes = new Dish[countDishes + 2];
@@ -26,8 +31,6 @@ public class RestaurantOrder implements Order {
             return false;
         }
     }
-
-    ;
 
     public boolean add(Drink drink) {
         if (drinks.length == countDrinks) {
@@ -44,6 +47,7 @@ public class RestaurantOrder implements Order {
         }
     }
 
+    // − удаляет позицию из заказа по его названию (принимает название блюда или напитка в качестве параметра). Возвращает логическое значение.
     @Override
     public void removeAll(String name) {
         while (true) {
@@ -53,10 +57,7 @@ public class RestaurantOrder implements Order {
         }
     }
 
-    public int getCount() {
-        return countDishes + countDrinks;
-    }
-
+    // − удаляет все позиции с заданным именем (принимает название в качестве параметра). Возвращает число удаленных элементов.
     public boolean remove(String name) {
         for (int i = 0; i < dishes.length; i++) {
             if (dishes[i].getName().equals(name)) {
@@ -85,6 +86,14 @@ public class RestaurantOrder implements Order {
         return false;
     }
 
+    // − возвращает общее число позиций заказа в заказе.
+    public int getCount() {
+        return countDishes + countDrinks;
+    }
+
+    // − возвращает массив позиций заказа.
+    // − возвращает число заказанных блюд или напитков (принимает название в качестве параметра).
+    // − возвращает массив названий заказанных блюд и напитков (без повторов).
     public Dish[] getAllDishes() {
         return dishes;
     }
@@ -145,6 +154,7 @@ public class RestaurantOrder implements Order {
         return drinks;
     }
 
+    // − возвращает общую стоимость заказа.
     public double priceTotal() {
         double total = 0;
         for (Dish dish : dishes) {
@@ -158,6 +168,7 @@ public class RestaurantOrder implements Order {
         return total;
     }
 
+    // − возвращает массив позиций заказа, отсортированный по убыванию цены. 
     public Dish[] SortedDishesByPrice() {
         for (int i = dishes.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {

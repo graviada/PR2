@@ -14,14 +14,21 @@ public class LabClassDriver {
     public void createLabClass() {
         System.out.print("Введите имя и оценку студента, чтобы добавить его ('-' - выйти из цикла): ");
         String name;
-        int mark;
+        int itin;
         Scanner in = new Scanner(System.in);
-        do {
-            name = (in.next());
-            if (!name.equals("-")) {
-                mark = in.nextInt();
-                labClass.add(new Student(name, mark));
-            }
-        } while (!name.equals("-"));
+        try {
+            do {
+                name = in.nextLine();
+                if (name.isEmpty())
+                    throw new EmptyStringException("Вы ввели пустую строку!");
+                if (!name.equals("-")) {
+                    itin = in.nextInt();
+                    labClass.add(new Student(name, itin));
+                }
+            } while (!name.equals("-"));
+        }
+        catch (EmptyStringException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

@@ -1,8 +1,13 @@
 package ru.chalovai.PR16;
 
+// Создайте объявляемое исключение OrderAlreadyAddedException, выбрасываемое при попытке добавить заказ столику или по адресу,
+// если со столиком или адресатом уже связан заказ.
+
 import java.util.HashMap;
 
 public class OrderManager {
+    // Добавьте ему еще одно поле типа java.util.HasMap<String, Order>, которое содержит пары адрес-заказ,
+    // и методы (работающие с этим полем)
     private HashMap<Integer, RestaurantOrder> restaurantOrderHashMap;
     private HashMap<String, InternetOrder> internetOrderHashMap;
 
@@ -11,8 +16,11 @@ public class OrderManager {
         internetOrderHashMap = new HashMap<>();
     }
 
+    // Методы класса:
+    // − перегрузка метода добавления заказа. В качестве параметров принимает строку – адрес и ссылку на заказ.
     public boolean add(int tableNumber, RestaurantOrder order) throws Exception {
         if (restaurantOrderHashMap.containsKey(tableNumber)) {
+            // Исключение OrderAlreadyAddedException
             throw new Exception("OrderAlreadyAddedException");
         } else {
             restaurantOrderHashMap.put(tableNumber, order);
@@ -29,20 +37,34 @@ public class OrderManager {
         }
     }
 
+    // − возвращающий массив имеющихся на данный момент интернет-заказов.
+    // − возвращающий общее среди всех интернет-заказов количество заказанных порций заданного блюда по его имени. Принимает имя блюда в качестве параметра. Методы должны работать с интерфейсными ссылками Order и Item.
+
+    // − перегрузка метода удаления заказа. В качестве параметра принимает строку – адрес заказа.
+    public void removeInternetOrder(String address) {
+        internetOrderHashMap.remove(address);
+    }
+
     public void removeRestaurantOrder(int tableNumber) {
         restaurantOrderHashMap.remove(tableNumber);
     }
 
-    public void removeInternetOrder(String address) {
-        internetOrderHashMap.remove(address);
+    // − перегрузка метода получения заказа. В качестве параметра принимает строку – адрес.
+    public InternetOrder getInternetOrder(String address) {
+        return internetOrderHashMap.get(address);
     }
 
     public RestaurantOrder getRestaurantOrder(int tableNumber) {
         return restaurantOrderHashMap.get(tableNumber);
     }
 
-    public InternetOrder getInternetOrder(String address) {
-        return internetOrderHashMap.get(address);
+    // − возвращающий суммарную сумму имеющихся на данный момент интернет-заказов.
+    public double InternetOrdersCostSummary() {
+        double total = 0;
+        for (String key : internetOrderHashMap.keySet()) {
+            total += internetOrderHashMap.get(key).priceTotal();
+        }
+        return total;
     }
 
     public double RestaurantOrdersCostSummary() {
@@ -53,12 +75,13 @@ public class OrderManager {
         return total;
     }
 
-    public double InternetOrdersCostSummary() {
-        double total = 0;
-        for (String key : internetOrderHashMap.keySet()) {
-            total += internetOrderHashMap.get(key).priceTotal();
-        }
-        return total;
+    // − перегрузка метода добавления позиции к заказу. В качестве параметра принимает адрес и Item.
+    public void addDishInternetOrder(String address, Dish dish) {
+        internetOrderHashMap.get(address).add(dish);
+    }
+
+    public void addDrinkInternetOrder(String address, Drink drink) {
+        internetOrderHashMap.get(address).add(drink);
     }
 
     public void addDishRestaurantOrder(int tableNumber, Dish dish) {
@@ -67,14 +90,6 @@ public class OrderManager {
 
     public void addDrinkRestaurantOrder(int tableNumber, Drink drink) {
         restaurantOrderHashMap.get(tableNumber).add(drink);
-    }
-
-    public void addDishInternetOrder(String address, Dish dish) {
-        internetOrderHashMap.get(address).add(dish);
-    }
-
-    public void addDrinkInternetOrder(String address, Drink drink) {
-        internetOrderHashMap.get(address).add(drink);
     }
 
     public String getAllOrders() {

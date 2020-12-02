@@ -44,4 +44,9 @@ public class LabClass {
     public boolean isEmpty() {
         return listOfStudents.isEmpty();
     }
+
+    @Override
+    public String toString () {
+        return listOfStudents.toString();
+    }
 }

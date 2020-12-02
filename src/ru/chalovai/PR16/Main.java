@@ -1,5 +1,7 @@
 package ru.chalovai.PR16;
 
+// Создайте не объявляемое исключение IllegalTableNumber, выбрасываемое в методах, принимающих номер столика в качестве параметра, если столика с таким номером не существует.
+
 public class Main {
     public static void main(String[] ar) {
         OrderManager orderManager = new OrderManager();

@@ -17,13 +17,12 @@ public class LabClassUI {
         String name;
 
         try {
-            name = (in.nextLine());
-
+            name = in.nextLine();
             if (name.isEmpty()) {
                 throw new EmptyStringException("Вы ввели пустую строку!");
             }
-
-        } catch (EmptyStringException e) {
+        }
+        catch (EmptyStringException e) {
             System.err.println(e.getMessage());
             System.out.println();
             findStudent();
@@ -32,9 +31,10 @@ public class LabClassUI {
 
         try {
             System.out.println(labClass.find(name).toString());
-        } catch (StudentNotFoundException e) {
+            System.out.println(labClass.toString());
+        }
+        catch (StudentNotFoundException e) {
             System.err.println(e.getMessage());
         }
-
     }
 }

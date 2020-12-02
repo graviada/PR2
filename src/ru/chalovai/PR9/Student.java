@@ -8,24 +8,27 @@ package ru.chalovai.PR9;
 // второго объекта. Если метод возвратит ноль, значит, оба объекта равны.
 
 class Student implements Comparable<Student> {
-    private final String name;
-    private final int mark;
+    private String name;
+    // Individual Taxpayer Identification Number
+    private int itin;
 
     @Override
     public int compareTo(Student ob) {
         // compare
         // Сравнивает два значения int численно
         // Значение 0, если x == y; значение меньше 0, если x < y; и значение больше 0, если x > y
-        return Integer.compare(this.mark, ob.getGrade());
+        return Integer.compare(this.itin, ob.getItin());
     }
 
-    public Student(String name, int mark) {
+    public Student(String name, int itin) {
         this.name = name;
-        this.mark = mark;
+        this.itin = itin;
     }
 
-    public int getGrade() {
-        return mark;
+    public Student() {
+    }
+    public int getItin() {
+        return itin;
     }
 
     public String getName() {
@@ -35,6 +38,6 @@ class Student implements Comparable<Student> {
     @Override
     public String toString() {
         return "Студент " + name +
-                ", оценка " + mark;
+                ", ИНН " + itin;
     }
 }
