@@ -12,7 +12,6 @@ public class ArrayQueue {
         size = head = tail = 0;
     }
 
-
     // Pre: capacity' > 0
     // Post: if required capacity of array bigger then current
     // Post: capacity' = capacity * 2

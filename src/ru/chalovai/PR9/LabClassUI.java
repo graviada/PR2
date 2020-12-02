@@ -13,7 +13,7 @@ public class LabClassUI {
 
     public void findStudent() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Введите имя студента: ");
+        System.out.println("Введите имя студента: ");
         String name;
 
         try {
