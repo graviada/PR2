@@ -4,3 +4,4 @@ Student{ name='ксюша', grade=3}
 Student{ name='тигран', grade=3}
 Student{ name='вася', grade=5}
 Student{ name='оля', grade=8}
+Студент паша, оценка 5
