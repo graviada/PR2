@@ -46,7 +46,8 @@ public final class Drink implements Item {
         return name;
     }
 
+    @Override
     public String toString() {
-        return "Цена: " + price + ", Напиток: " + name;
+        return "Напиток: " + name + ", Цена: " + price;
     }
 }

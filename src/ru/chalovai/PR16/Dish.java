@@ -40,6 +40,6 @@ public final class Dish implements Item {
 
     @Override
     public String toString() {
-        return "Цена: " + price + ", Блюдо: " + name;
+        return "Блюдо: " + name + ", Цена: " + price;
     }
 }

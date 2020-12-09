@@ -121,7 +121,6 @@ public class InternetOrder implements Order {
     }
 
     // − удаляющий все позиции с заданным именем (принимает название в качестве параметра).
-    // Возвращает число удаленных элементов.
     public void removeAll(String name) {
         boolean flag = true;
         while (flag) {

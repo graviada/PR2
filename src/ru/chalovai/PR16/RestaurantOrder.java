@@ -3,6 +3,10 @@ package ru.chalovai.PR16;
 // Переименуйте класс Order из предыдущего задания в RestaurantOrder.
 // Создайте интерфейс Order – позиции заказа.
 
+import ru.chalovai.PR16.Dish;
+import ru.chalovai.PR16.Drink;
+import ru.chalovai.PR16.Order;
+
 public class RestaurantOrder implements Order {
     private int countDishes, countDrinks;
     private Dish[] dishes;

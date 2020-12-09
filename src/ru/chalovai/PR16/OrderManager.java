@@ -3,6 +3,10 @@ package ru.chalovai.PR16;
 // Создайте объявляемое исключение OrderAlreadyAddedException, выбрасываемое при попытке добавить заказ столику или по адресу,
 // если со столиком или адресатом уже связан заказ.
 
+import ru.chalovai.PR16.Dish;
+import ru.chalovai.PR16.Drink;
+import ru.chalovai.PR16.InternetOrder;
+
 import java.util.HashMap;
 
 public class OrderManager {
@@ -36,9 +40,6 @@ public class OrderManager {
             return false;
         }
     }
-
-    // − возвращающий массив имеющихся на данный момент интернет-заказов.
-    // − возвращающий общее среди всех интернет-заказов количество заказанных порций заданного блюда по его имени. Принимает имя блюда в качестве параметра. Методы должны работать с интерфейсными ссылками Order и Item.
 
     // − перегрузка метода удаления заказа. В качестве параметра принимает строку – адрес заказа.
     public void removeInternetOrder(String address) {
@@ -92,6 +93,7 @@ public class OrderManager {
         restaurantOrderHashMap.get(tableNumber).add(drink);
     }
 
+    // − возвращающий массив имеющихся на данный момент интернет-заказов.
     public String getAllOrders() {
         StringBuilder s = new StringBuilder();
         if (!restaurantOrderHashMap.isEmpty()) {
